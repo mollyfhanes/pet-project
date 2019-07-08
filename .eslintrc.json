@@ -1,11 +1,16 @@
 {
   "parser": "babel-eslint",
-  "extends": "fullstack",
+  "extends": "airbnb",
   "parserOptions": {
     "ecmaVersion": 2017
   },
   "rules": {
     "new-cap": ["error", { "newIsCap": true, "capIsNew": false }],
-    "react/no-did-mount-set-state": 0
-  }
+    "react/no-did-mount-set-state": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "semi": ["error", "never"]
+  },
+  "globals": {
+        "document": "writable"
+    }
  }

@@ -1,15 +1,15 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import logger from 'redux-logger'
 import thunks from 'redux-thunk'
 import axios from 'axios'
 import history from '../history'
-import stuff from './stuff'
+import reducer from './reducer'
 
-const reducer = combineReducers({ stuff })
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const store = createStore(
   reducer,
-  applyMiddleware(thunks.withExtraArgument({ axios, history }), logger)
+  composeEnhancers(applyMiddleware(thunks.withExtraArgument({ axios, history }), logger)),
 )
 
 export default store
